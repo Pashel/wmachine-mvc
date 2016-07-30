@@ -1,0 +1,24 @@
+/* фон */
+footer {
+	background: url(/template/images/body-tail.gif) center top repeat;
+}
+footer .footerWrapper {
+	background: url(/template/images/footer-tail.gif) left top repeat-x;
+}
+
+/*отступы (для ширины)*/
+footer .row{
+	margin: 10px 0px;
+}
+
+/*отступ логотипа*/
+footer .infoName {
+	padding-top: 10px;
+}
+
+/* == col-xs */
+@media screen and (max-width: 768px) {
+	footer .row{
+		text-align: center;
+	}
+}

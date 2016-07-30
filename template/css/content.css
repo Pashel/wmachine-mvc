@@ -1,0 +1,61 @@
+
+/* фон содержмого */
+.wrapper {
+	background: url(/template/images/content-tail.gif) center top repeat;
+}
+
+/* свойства карусели */
+.mainUp .carousel {
+	max-width: 580px;
+	margin: auto;
+}
+
+/* свойства окошка контактов */
+.mainUp .callWrapper {
+	text-align: center;
+}
+
+.mainUp .callForm, .contacts .callForm {
+	max-width: 300px;
+
+	border: 4px solid #337ab7;
+	border-radius: 20px;
+
+	text-align: center;
+	padding: 20px 20px;
+
+	margin: auto;
+}
+
+/* чисто свойства окошка на главной странице*/
+.mainUp .callForm {
+	margin-top: 4%;
+	margin-bottom: 20px;
+}
+
+
+/* выравнивание заголовка страницы услуг */
+.services .title, .contacts .title {
+	text-align: center;
+}
+
+/* свойства карты */
+.contacts .map {
+	text-align: center;
+}
+
+
+
+/* == col-xs */
+@media screen and (max-width: 768px) {
+	section .mainUp .call {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	section ul {
+		padding-left: 3%;
+	}
+	section p {
+		padding: 0px 2%;
+	}
+}

@@ -1,0 +1,26 @@
+
+/* фон */
+header {
+	background: url(/template/images/body-tail.gif) center top repeat;
+}
+
+header .headerWrapper {
+	background: url(/template/images/border-bot.gif) left bottom repeat-x
+}
+
+
+/* Меню */
+header .nav {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* == col-xs */
+@media screen and (max-width: 768px) {
+	header .siteName {
+		text-align: center;
+	}
+	header .siteName img {
+		max-width: 100%;
+	}
+}

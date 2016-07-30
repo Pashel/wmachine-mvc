@@ -1,0 +1,23 @@
+
+/* Общий фон ??? */
+body {
+
+}
+
+/* Обищие свойства текта */
+.container {
+	font-family: Verdana,sans-serif;
+	font-size: 14px;
+	line-height: 160%;
+}
+
+/* отступы между строками элементов */
+.row {
+	margin: 15px 0px;
+}
+
+/* отступ первой строки для параграфов */
+p {
+	text-indent: 20px;
+}
+
