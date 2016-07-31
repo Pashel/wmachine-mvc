@@ -5,13 +5,13 @@
 	<div class="container">
 		
 		<div class="row title">
-			<h2>
+			<h2 class="managed">
 				<?php echo $headers['services']; ?>
 			</h2>
 		</div>
 
 		<div class="row">
-			<p>
+			<p class="managed">
 				<?php echo $paragraphs[0]; ?>
 			</p>
 		</div>
@@ -27,8 +27,8 @@
 		  		<tbody>
 		  			<?php foreach ($serviceList as $key => $value) : ?>
 		  				<tr>
-		  					<td><?php echo $key; ?></td>
-		  					<td><?php echo $value; ?></td>
+		  					<td class="managed"><?php echo $key; ?></td>
+		  					<td class="managed"><?php echo $value; ?></td>
 		  				</tr>	
 		  			<?php endforeach ?>
 			  	</tbody>

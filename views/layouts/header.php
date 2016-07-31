@@ -37,9 +37,13 @@
     	            </div>
     	            <div class="col-sm-5">
     	                <ul class="nav nav-pills nav-justified">
-    	                  <li role="presentation" class="active"><a href="/">Главная</a></li>
-    	                  <li role="presentation"><a href="/services">Услуги</a></li>
-    	                  <li role="presentation"><a href="/contacts">Контакты</a></li>
+                            <?php foreach ($this->menu as $item) : ?>
+                                <li role="presentation" class="<?php if($item['id'] == $pageId) echo 'active'; ?>">
+                                    <a class="managed" href="<?php echo $item['href'] ?>">
+                                        <?php echo $item['value']; ?>
+                                    </a>
+                                </li>
+                            <?php endforeach ?>
     	                </ul>
     	            </div>
     	        </div>

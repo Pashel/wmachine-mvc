@@ -4,9 +4,9 @@ return array(
 	
 		//'item/([0-9]+)' => 'main/view/$1',
 
-		'contacts' => 'data/contact',
+		'contacts' => 'data/contact/3',
 
-		'services' => 'data/service',
+		'services' => 'data/service/2',
 
-		'^(.*)$' => 'data/index',
+		'^(.*)$' => 'data/index/1',
 	);

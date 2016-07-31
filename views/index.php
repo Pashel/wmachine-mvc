@@ -44,14 +44,14 @@
 
 			<div class="callWrapper col-sm-5">
 				<div class="callForm">
-					<h3><?php echo $headers['phones']; ?></h3>
+					<h3 class="managed"><?php echo $headers['phones']; ?></h3>
 					<?php foreach ($phones as $phone => $value) : ?>
-						<h4><?php echo $value; ?></h4>
+						<h4 class="managed"><?php echo $value; ?></h4>
 					<?php endforeach ?>
 				</div>
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-				  Оставить заявку
+					<span class="managed">Оставить заявку</span>
 				</button>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -78,34 +78,34 @@
 </section>
 
 <!--==============================TextContent=================================-->
-<section class="mainDown"ion>
+<section class="mainDown">
 	<div class="container">
         
         <div class="title row" style="text-align: center;">
-        	<h2><?php echo $headers['site_name']; ?></h2>
+        	<h2 class="managed"><?php echo $headers['site_name']; ?></h2>
         </div>
 
         <div class="row">
-        	<p>
+        	<p class="managed">
 				<?php echo $paragraphs[0]; ?>
 			</p>
-			<p>
+			<p class="managed">
 				<?php echo $paragraphs[1]; ?>
         	</p>
         </div>
 
         <div class="row">
     		<div class="col-sm-6">
-	    		<h3 style="text-align: center;"><?php echo $headers['why']; ?></h3>
-	    		<ul>
+	    		<h3 class="managed" style="text-align: center;"><?php echo $headers['why']; ?></h3>
+	    		<ul class="managed">
 	    			<?php foreach ($whyList as $case => $value) : ?>
 	    				<li><?php echo $value; ?></li>
 	    			<?php endforeach ?>
 				</ul>
             </div>
             <div class="col-sm-6">
-	    		<h3 style="text-align: center;"><?php echo $headers['what']; ?></h3>
-	    		<ul>
+	    		<h3 class="managed" style="text-align: center;"><?php echo $headers['what']; ?></h3>
+	    		<ul class="managed">
 	    			<?php foreach ($whatList as $case => $value) : ?>
 	    				<li><?php echo $value; ?></li>
 	    			<?php endforeach ?>
@@ -114,7 +114,7 @@
         </div>
 
         <div class="row">
-        	<p>
+        	<p class="managed">
 				<?php echo $paragraphs[2]; ?>
 			</p>
         </div>
