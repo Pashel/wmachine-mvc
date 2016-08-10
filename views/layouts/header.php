@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/template/css/header.css">
     <link rel="stylesheet" type="text/css" href="/template/css/content.css">
     <link rel="stylesheet" type="text/css" href="/template/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/template/css/admin.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +40,7 @@
     	                <ul class="nav nav-pills nav-justified">
                             <?php foreach ($this->menu as $item) : ?>
                                 <li role="presentation" class="<?php if($item['id'] == $pageId) echo 'active'; ?>">
-                                    <a class="managed" href="<?php echo $item['href'] ?>">
+                                    <a class="managed" data-table="menu" data-id="<?php echo $item['id']; ?>" href="<?php echo $item['href']; ?>">
                                         <?php echo $item['value']; ?>
                                     </a>
                                 </li>
@@ -50,6 +51,43 @@
             </div>
         </div>
     </header>
+
+    <?php if(isset($_SESSION['login'])) : ?>
+        <div class="admin-panel">
+            <form method="post" action="/logout">
+                <div id="current-orders" class="orders">
+                    Заявок: <?php echo $this->ordersCount; ?>
+                </div>
+                <input type="submit" id="logout" class="logout" value="Выйти">
+            </form>
+        </div>
+    <?php endif ?>
+
+    <!-- Modal -->
+    <div class="modal" id="myManageModal">
+      <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" ><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Редактировать:</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" name="modalForm">       
+                <textarea name="text" class="modal-edit" style="width: 100%; max-width: 100%; height: 150px"></textarea>
+                <input type="text" name="price" class="modal-price" style="display:none; width: 200px; max-width: 100%">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="cancel" type="button" class="btn btn-default">Отменить</button>
+            <button id="save" type="button" class="btn btn-primary">Сохранить</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
 
     <!--==============================Content=================================-->
     <div class="wrapper">

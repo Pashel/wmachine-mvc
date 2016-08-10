@@ -13,7 +13,6 @@ class Menu
 		$db = Db::getConnection();
 
 		$items = array();
-		$item = array();
 
 		$stmt = $db->query("SELECT * FROM menu");
 		if(!$stmt) return null;
@@ -27,4 +26,20 @@ class Menu
 		return $items;
 	}
 
+	/**
+	* обновление данных
+	**/
+	public static function update($id, $text)
+	{
+		$db = Db::getConnection();
+
+		$stmt = $db->prepare("UPDATE menu SET value=:text WHERE id=:id");
+		$result = $stmt->execute(array('text' => $text, 'id' => $id));
+
+		if($result) {
+			return "ok";
+		}
+
+		return "error";
+	}
 }

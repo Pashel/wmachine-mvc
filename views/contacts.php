@@ -5,14 +5,14 @@
 	<div class="container">
 		
 		<div class="row title">
-			<h2 class="managed">
-				<?php echo $headers['contacts']; ?>
+			<h2 class="managed" data-table="data" data-id="<?php echo $headers['contacts']['id']; ?>">
+				<?php echo $headers['contacts']['value']; ?>
 			</h2>
 		</div>
 
 		<div class="row">
-			<p class="managed">
-				<?php echo $paragraphs[0]; ?>
+			<p class="managed" data-table="data" data-id="<?php echo $paragraphs[0]['id']; ?>">
+				<?php echo $paragraphs[0]['value']; ?>
 			</p>
 		</div>
 
@@ -23,9 +23,9 @@
 
 		<div class="row">
 			<div class="callForm">
-				<h3 class="managed"><?php echo $headers['phones']; ?></h3>
-				<?php foreach ($phones as $phone => $value) : ?>
-					<h4 class="managed"><?php echo $value; ?></h4>
+				<h3 class="managed" data-table="data" data-id="<?php echo $headers['phones']['id']; ?>"><?php echo $headers['phones']['value']; ?></h3>
+				<?php foreach ($phones as $phone) : ?>
+					<h4 class="managed" data-table="data" data-id="<?php echo $phone['id']; ?>"><?php echo $phone['value']; ?></h4>
 				<?php endforeach ?>
 			</div>
 		</div>

@@ -57,6 +57,7 @@ class Router
 				//$controllerObject->$actionName($params);
 				call_user_func_array(array($controllerObject, $actionName), $params);
 
+				// прерываем поиск соответствующегт контроллера и метода
 				break;
 			}
 

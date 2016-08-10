@@ -2,6 +2,7 @@
 /* фон содержмого */
 .wrapper {
 	background: url(/template/images/content-tail.gif) center top repeat;
+	min-height: 500px;
 }
 
 /* свойства карусели */

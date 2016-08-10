@@ -15,14 +15,18 @@ class Data
 		$items = array();
 
 		$stmt = $db->prepare("SELECT * FROM data WHERE type='header' AND page_id=:pageId");
-		$stmt->execute(array('pageId' => $pageId));
+		$result = $stmt->execute(array('pageId' => $pageId));
 
-		if(!$stmt) return null;
+		if(!$result) {
+			return null;
+		}
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 		foreach ($stmt as $row) {
-			$items[$row['name']] = $row['value'];
+			//array_push($items, $row);
+			$items[$row['name']]['value'] = $row['value'];
+			$items[$row['name']]['id'] = $row['id'];
 		}
 
 		return $items;
@@ -38,14 +42,19 @@ class Data
 		$items = array();
 
 		$stmt = $db->prepare("SELECT * FROM data WHERE type='paragraph' AND page_id=:pageId");
-		$stmt->execute(array('pageId' => $pageId));
+		$result = $stmt->execute(array('pageId' => $pageId));
 
-		if(!$stmt) return null;
+		if(!$result) {
+			return null;
+		}
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
+		$counter = 0;
 		foreach ($stmt as $row) {
-			array_push($items, $row['value']);
+			$items[$counter]['id'] = $row['id'];
+			$items[$counter]['value'] = $row['value'];
+			$counter++;
 		}
 
 		return $items;
@@ -65,8 +74,11 @@ class Data
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
+		$counter = 0;
 		foreach ($stmt as $row) {
-			array_push($items, $row['value']);
+			$items[$counter]['id'] = $row['id'];
+			$items[$counter]['value'] = $row['value'];
+			$counter++;
 		}
 
 		return $items;
@@ -79,19 +91,19 @@ class Data
 	{
 		$db = Db::getConnection();
 
-		$items = array();
+		$item = array();
 
 		$stmt = $db->query("SELECT * FROM data WHERE type='why_list'");
 		if(!$stmt) return null;
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-		$str = $stmt->fetch()['value'];
+		$row = $stmt->fetch();
 
-		// разбиваем текст на строки
-		$items = explode("\n", $str);
+		$item['id'] = $row['id'];
+		$item['value'] = explode("\n", $row['value']);
 
-		return $items;
+		return $item;
 	}
 
 	/**
@@ -101,19 +113,19 @@ class Data
 	{
 		$db = Db::getConnection();
 
-		$items = array();
+		$item = array();
 
 		$stmt = $db->query("SELECT * FROM data WHERE type='what_list'");
 		if(!$stmt) return null;
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-		$str = $stmt->fetch()['value'];
+		$row = $stmt->fetch();
 
-		// разбиваем текст на строки
-		$items = explode("\n", $str);
+		$item['id'] = $row['id'];
+		$item['value'] = explode("\n", $row['value']);
 
-		return $items;
+		return $item;
 	}
 
 	/**
@@ -130,10 +142,31 @@ class Data
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
+		$counter = 0;
 		foreach ($stmt as $row) {
-			array_push($items, $row['value']);
+			$items[$counter]['id'] = $row['id'];
+			$items[$counter]['value'] = $row['value'];
+			$counter++;
 		}
 
 		return $items;
+	}
+
+
+	/**
+	* обновление данных
+	**/
+	public static function update($id, $text)
+	{
+		$db = Db::getConnection();
+
+		$stmt = $db->prepare("UPDATE data SET value=:text WHERE id=:id");
+		$result = $stmt->execute(array('text' => $text, 'id' => $id));
+
+		if($result) {
+			return "ok";
+		}
+
+		return "error";
 	}
 }

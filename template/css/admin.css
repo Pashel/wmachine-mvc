@@ -1,0 +1,14 @@
+
+.admin-panel {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.orders {
+	cursor: pointer;
+}
+
+.logout {
+	width: 100%;
+}

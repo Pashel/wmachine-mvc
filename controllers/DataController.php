@@ -13,6 +13,10 @@ class DataController
 	{
 		$this->menu = Menu::getAllMenuItems();
 		$this->footerStrings = Data::getAllFooterStrings();
+
+		if(isset($_SESSION['login'])){
+			$this->ordersCount = Order::getOrdersCount();
+		}
 	}
 
 	public function actionIndex($pageId)
@@ -27,25 +31,21 @@ class DataController
 
 		$whatList = Data::getWhatListItems();
 
-		//$footerStrings = Data::getAllFooterStrings();
-
 		require_once(ROOT . '/views/index.php');
 	}
 
-	public function actionService($pageId)
+	public function actionShowServices($pageId)
 	{
 		$headers = Data::getAllHeaders($pageId);
 
 		$paragraphs = Data::getAllParagraphs($pageId);
-
-		//$footerStrings = Data::getAllFooterStrings();
 
 		$serviceList = Service::getServicesList();
 
 		require_once(ROOT . '/views/services.php');
 	}
 
-	public function actionContact($pageId)
+	public function actionShowContacts($pageId)
 	{
 		$headers = Data::getAllHeaders($pageId);
 
@@ -53,8 +53,21 @@ class DataController
 
 		$phones = Data::getAllPhones();
 
-		//$footerStrings = Data::getAllFooterStrings();
-
 		require_once(ROOT . '/views/contacts.php');
+	}
+
+	public function actionDeleteService($serviceId)
+	{
+		// если не режим админа
+		if(!isset($_SESSION['login'])) {
+			header("Location: /");
+			return;
+		}
+
+		// удаляем ордер из таблицы
+		$result = Service::deleteService($serviceId);
+
+		// отображаем страницу ордеров
+		header('Location: /services');
 	}
 }
